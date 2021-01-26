@@ -10,12 +10,12 @@ snake[0] = {
 
 let direction = "right";
 
-function criarBG() {
+function createdBackground() {
   context.fillStyle = "lightgreen";
   context.fillRect(0, 0, 16 * box, 16 * box);
 }
 
-function criarCobrinha() {
+function createdSnake() {
   for (i = 0; i < snake.length; i++) {
     context.fillStyle = "green";
     context.fillRect(snake[i].x, snake[i].y, box, box);
@@ -31,14 +31,14 @@ function update(event) {
   if (event.keyCode == 40 && direction != "up") direction = "down";
 }
 
-function iniciarJogo() {
+function initGame() {
   if (snake[0].x > 15 * box && direction == "right") snake[0].x = 0;
   if (snake[0].x < 0 && direction == "left") snake[0].x = 16 * box;
   if (snake[0].y > 15 * box && direction == "down") snake[0].y = 0;
   if (snake[0].y < 0 && direction == "up") snake[0].y = 16 * box;
 
-  criarBG();
-  criarCobrinha();
+  createdBackground();
+  createdSnake();
 
   let snakeX = snake[0].x;
   let snakeY = snake[0].y;
@@ -58,4 +58,4 @@ function iniciarJogo() {
   snake.unshift(newHead);
 }
 
-let jogo = setInterval(iniciarJogo, 100);
+let jogo = setInterval(initGame, 100);
